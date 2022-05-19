@@ -1,8 +1,8 @@
 // Express
 import { Request, Response, Router } from 'express'
 
-// Middleware
-import { requireAuthMiddleware_requireAuth } from '../middlewares'
+// Common Modules
+import { requireAuthMiddleware_requireAuth } from '@hudaprs-ticketing/common'
 
 // Router
 const router: Router = Router()

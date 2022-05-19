@@ -4,11 +4,11 @@ import { Request, Response, Router } from 'express'
 // Express Validator
 import { body } from 'express-validator'
 
-// Error
-import { BadRequestError } from '../errors'
-
-// Middleware
-import { validationMiddleware_validate } from '../middlewares'
+// Common Modules
+import {
+	validationMiddleware_validate,
+	BadRequestError
+} from '@hudaprs-ticketing/common'
 
 // Models
 import { User } from '../models'

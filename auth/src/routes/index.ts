@@ -7,8 +7,8 @@ import { signInRouter } from './sign-in.router'
 import { signUpRouter } from './sign-up.router'
 import { signOutRouter } from './sign-out.router'
 
-// Error
-import { NotFoundError } from '../errors'
+// Common Modules
+import { NotFoundError } from '@hudaprs-ticketing/common'
 
 // Constant
 const USER_URL = '/api/users/'

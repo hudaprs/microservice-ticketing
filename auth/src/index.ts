@@ -11,7 +11,7 @@ import { routes } from './routes'
 import {
 	currentUserMiddleware_me,
 	errorMiddleware_handler
-} from './middlewares'
+} from '@hudaprs-ticketing/common'
 
 // Cookie
 import cookieSession from 'cookie-session'

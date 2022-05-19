@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@hudaprs-ticketing/common@^1.0.11":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@hudaprs-ticketing/common/-/common-1.0.13.tgz#2eb0ed5410e7b17592ca790e3280e582355ede49"
+  integrity sha512-iKGNcYHCEaHgd4VXTW0zTfzDjO+gmuQCPQGNTQeu/QxbhdIq4gg2fXhbKDp4lOSqchfcmQT7m5i68yZNtbt3pQ==
+  dependencies:
+    cookie-session "^2.0.0"
+    express "^4.18.1"
+    express-validator "^6.14.0"
+    jsonwebtoken "^8.5.1"
+
 "@mapbox/node-pre-gyp@^1.0.0":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.9.tgz#09a8781a3a036151cdebbe8719d6f8b25d4058bc"

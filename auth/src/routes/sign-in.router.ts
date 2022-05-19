@@ -3,10 +3,12 @@ import { Request, Response, Router } from 'express'
 
 // Express Validator
 import { body } from 'express-validator'
-import { BadRequestError } from '../errors'
 
-// Middleware
-import { validationMiddleware_validate } from '../middlewares'
+// Common Modules
+import {
+	validationMiddleware_validate,
+	BadRequestError
+} from '@hudaprs-ticketing/common'
 
 // Model
 import { User } from '../models'
@@ -15,7 +17,7 @@ import { User } from '../models'
 import bcrypt from 'bcrypt'
 
 // JWT
-import jwt, { JsonWebTokenError } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 
 // Router
 const router: Router = Router()
