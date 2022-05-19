@@ -10,7 +10,7 @@
 	"scripts": {
 		"clean": "del-cli ./build/*",
 		"build": "yarn run clean && tsc",
-		"pub": "git add . && git commit -m \"Updates\" && yarn version --patch && yarn run build && yarn publish"
+		"pub": "git add . && git commit -m \"Updates\" && yarn version --patch && yarn run build && yarn publish --access public"
 	},
 	"devDependencies": {
 		"@types/cookie-session": "^2.0.44",
