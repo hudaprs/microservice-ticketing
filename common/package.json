@@ -1,5 +1,5 @@
 {
-	"name": "common",
+	"name": "@udemy-microservice-ticketing/common",
 	"version": "1.0.9",
 	"license": "MIT",
 	"main": "./build/index.js",
