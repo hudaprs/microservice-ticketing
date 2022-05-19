@@ -1,0 +1,41 @@
+Arguments: 
+  /home/hudaboss/.nvm/versions/node/v16.15.0/bin/node /home/hudaboss/.nvm/versions/node/v16.15.0/bin/yarn add -D @type/cookie-session @types/express @types/jsonwebtoken
+
+PATH: 
+  /home/hudaboss/.nvm/versions/node/v16.15.0/bin:/home/hudaboss/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.15.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@type%2fcookie-session: Not found
+      at Request.params.callback [as _callback] (/home/hudaboss/.nvm/versions/node/v16.15.0/lib/node_modules/yarn/lib/cli.js:66138:18)
+      at Request.self.callback (/home/hudaboss/.nvm/versions/node/v16.15.0/lib/node_modules/yarn/lib/cli.js:140883:22)
+      at Request.emit (node:events:527:28)
+      at Request.<anonymous> (/home/hudaboss/.nvm/versions/node/v16.15.0/lib/node_modules/yarn/lib/cli.js:141855:10)
+      at Request.emit (node:events:527:28)
+      at IncomingMessage.<anonymous> (/home/hudaboss/.nvm/versions/node/v16.15.0/lib/node_modules/yarn/lib/cli.js:141777:12)
+      at Object.onceWrapper (node:events:641:28)
+      at IncomingMessage.emit (node:events:539:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "common",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
