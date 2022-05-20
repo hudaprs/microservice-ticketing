@@ -7,7 +7,13 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 # Build Auth Service
 
 ```shell
-docker build -t hudaprasetyo/udemy-microservice-ticketing/auth
+docker build -t hudaprasetyo/udemy-microservice-ticketing/auth .
+```
+
+# Build Ticket Service
+
+```shell
+docker build -t hudaprasetyo/udemy-microservice-ticketing/ticket .
 ```
 
 # Port Forwarding Some Pod
