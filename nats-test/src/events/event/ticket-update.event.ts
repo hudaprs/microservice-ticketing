@@ -1,8 +1,8 @@
 // Subjects
 import { Subjects } from '../subjects'
 
-interface TicketCreatedEvent {
-	subject: Subjects.TicketCreated
+interface TicketUpdatedEvent {
+	subject: Subjects.TicketUpdated
 	data: {
 		id: string
 		title: string
@@ -11,4 +11,4 @@ interface TicketCreatedEvent {
 	}
 }
 
-export { TicketCreatedEvent }
+export { TicketUpdatedEvent }
