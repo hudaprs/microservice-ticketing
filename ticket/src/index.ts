@@ -19,6 +19,9 @@ import mongoose from 'mongoose'
 // Cookie Session
 import cookieSession from 'cookie-session'
 
+// NATS Wrapper
+import { natsWrapper } from './nats-wrapper'
+
 const app: Express = express()
 
 // Trust Proxy
@@ -48,6 +51,19 @@ const start = async (): Promise<void> => {
 	try {
 		if (!process.env.JWT_KEY) throw new Error('JWT_KEY is not defined!')
 		if (!process.env.MONGO_URI) throw new Error('MONGO_URI is not defined!')
+
+		await natsWrapper.connect(
+			'ticketing',
+			'SOME_CLIENT_ID',
+			'http://nats-srv:4222'
+		)
+		console.log('Ticket NATS Connected')
+		natsWrapper.client.on('close', () => {
+			console.log('STAN Closed!')
+			process.exit()
+		})
+		process.on('SIGINT', () => natsWrapper.client.close())
+		process.on('SIGTERM', () => natsWrapper.client.close())
 
 		await mongoose.connect(process.env.MONGO_URI)
 		console.log('Ticket MongoDB Connected')

@@ -13,6 +13,12 @@ import {
 // Model
 import { Ticket } from '../models'
 
+// Events
+import { TicketCreatedPublisher } from '../events'
+
+// NATS Wrapper
+import { natsWrapper } from '../nats-wrapper'
+
 const router: Router = Router()
 
 router.post(
@@ -31,6 +37,12 @@ router.post(
 			price,
 			userId: req.currentUser!.id
 		}).save()
+		await new TicketCreatedPublisher(natsWrapper.client).publish({
+			id: ticket.id,
+			title: ticket.title,
+			price: ticket.price,
+			userId: ticket.userId
+		})
 
 		res.status(201).json(ticket)
 	}
