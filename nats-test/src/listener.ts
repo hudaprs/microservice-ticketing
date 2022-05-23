@@ -5,7 +5,7 @@ import nats, { Message, Stan, SubscriptionOptions } from 'node-nats-streaming'
 import { randomBytes } from 'crypto'
 
 // Listener
-import { TicketCreatedListener } from './events'
+import { TicketCreatedListener, TicketUpdatedListener } from './events'
 
 console.clear()
 
@@ -16,8 +16,9 @@ const stan = nats.connect('ticketing', randomBytes(4).toString('hex'), {
 stan.on('connect', () => {
 	console.log('Listener connected to NATS')
 
-	// Watch incoming ticket created
+	// Watch incoming ticket service
 	new TicketCreatedListener(stan).listen()
+	new TicketUpdatedListener(stan).listen()
 
 	// Handle when listener is closed
 	stan.on('close', () => {

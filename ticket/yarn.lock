@@ -3,9 +3,9 @@
 
 
 "@hudaprs-ticketing/common@^1.0.13":
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/@hudaprs-ticketing/common/-/common-1.0.18.tgz#9a6a9ae48d723114a49d9fce51ff08cea7de8f79"
-  integrity sha512-xGTEvXCNw2tQuUS2Rv5nZbiYLTvn/OTc4BOF1c4/zfLeEQ0BEp5GCCukougPJ7TbHWF4sxPGetEZxB0pMF/Qsw==
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/@hudaprs-ticketing/common/-/common-1.0.21.tgz#13dc20d63f295cdd86772954e9355856cdbc1718"
+  integrity sha512-1kkIdQP1dfMo82KS+4UfAJ7k106T+dQWzetQAnbVdL+eglvKMpY+S0D4mLfP8v5XUlnussvlwcF/V1RoVelrvA==
   dependencies:
     cookie-session "^2.0.0"
     express "^4.18.1"

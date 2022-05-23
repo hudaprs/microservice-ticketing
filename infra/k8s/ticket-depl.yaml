@@ -16,6 +16,14 @@ spec:
         - name: ticket
           image: hudaprasetyo/udemy-microservice-ticketing/ticket
           env:
+            - name: NATS_CLUSTER_ID
+              value: ticketing
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URI
+              value: http://nats-srv:4222
             - name: MONGO_URI
               value: mongodb://ticket-mongo-srv:27017/ticket
             - name: JWT_KEY
@@ -23,6 +31,7 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+
 ---
 apiVersion: v1
 kind: Service

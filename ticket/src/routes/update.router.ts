@@ -15,6 +15,12 @@ import {
 // Express Validator
 import { body } from 'express-validator'
 
+// NATS Wrapper
+import { natsWrapper } from '../nats-wrapper'
+
+// Events
+import { TicketUpdatedPublisher } from '../events'
+
 const router: Router = Router()
 
 router.put(
@@ -41,6 +47,12 @@ router.put(
 			userId: req.currentUser!.id
 		})
 		await ticket.save()
+		await new TicketUpdatedPublisher(natsWrapper.client).publish({
+			id: ticket.id,
+			title: ticket.title,
+			price: ticket.price,
+			userId: ticket.userId
+		})
 
 		res.status(200).json(ticket)
 	}
