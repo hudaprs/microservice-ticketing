@@ -24,3 +24,11 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: hudaprasetyo/udemy-microservice-ticketing/order
+      context: order
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .

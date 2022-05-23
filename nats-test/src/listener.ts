@@ -1,5 +1,5 @@
 // NATS
-import nats, { Message, Stan, SubscriptionOptions } from 'node-nats-streaming'
+import nats from 'node-nats-streaming'
 
 // Crypto
 import { randomBytes } from 'crypto'

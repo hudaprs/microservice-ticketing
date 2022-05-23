@@ -62,7 +62,7 @@ const start = async (): Promise<void> => {
 			process.env.NATS_CLIENT_ID,
 			process.env.NATS_URI
 		)
-		console.log('Ticket NATS Connected')
+		console.log('Order NATS Connected')
 		natsWrapper.client.on('close', () => {
 			console.log('NATS Closed!')
 			process.exit()
@@ -71,12 +71,12 @@ const start = async (): Promise<void> => {
 		process.on('SIGTERM', () => natsWrapper.client.close())
 
 		await mongoose.connect(process.env.MONGO_URI)
-		console.log('Ticket MongoDB Connected')
+		console.log('Order MongoDB Connected')
 	} catch (err) {
-		console.error('Something Went Wrong When Starting The Ticket Service', err)
+		console.error('Something Went Wrong When Starting The Order Service', err)
 	}
 
-	app.listen(3000, () => console.log('Ticket Service Started'))
+	app.listen(3000, () => console.log('Order Service Started'))
 }
 
 // Start The App

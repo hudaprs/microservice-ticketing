@@ -29,3 +29,9 @@ docker build -t hudaprasetyo/udemy-microservice-ticketing/auth .
 ```shell
 docker build -t hudaprasetyo/udemy-microservice-ticketing/ticket .
 ```
+
+# Build Order Service
+
+```shell
+docker build -t hudaprasetyo/udemy-microservice-ticketing/order .
+```
