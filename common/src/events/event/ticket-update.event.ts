@@ -7,7 +7,7 @@ interface TicketUpdatedEvent {
 		id: string
 		title: string
 		price: number
-		userId: number
+		userId: string
 	}
 }
 
