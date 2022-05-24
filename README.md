@@ -18,6 +18,12 @@ kubectl get pods
 kubectl port-forward <pod-name> your-port:pod-port
 ```
 
+# Execute Running Pod
+
+```shell
+kubectl exec -it <pod-name> sh
+```
+
 # Build Auth Service
 
 ```shell

@@ -34,8 +34,6 @@ router.post(
 	requireAuthMiddleware_requireAuth,
 	[
 		body('ticketId')
-			.not()
-			.isEmpty()
 			.custom((input: string) => mongoose.Types.ObjectId.isValid(input))
 			.withMessage('ticketId is not match')
 	],
@@ -65,6 +63,7 @@ router.post(
 
 		// Publish Event
 		await new OrderCreatedPublisher(natsWrapper.client).publish({
+			id: order.id,
 			userId: order.userId,
 			expiresAt: order.expiresAt.toISOString(),
 			status: order.status,
@@ -74,7 +73,7 @@ router.post(
 			}
 		})
 
-		res.status(201).json({ message: 'Create Order Success' })
+		res.status(201).json(order)
 	}
 )
 

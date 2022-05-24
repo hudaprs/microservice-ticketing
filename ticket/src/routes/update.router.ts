@@ -41,6 +41,10 @@ router.put(
 		if (ticket.userId !== req.currentUser!.id)
 			throw new BadRequestError('You not permitted to do this action!')
 
+		// Check if ticket already reserved
+		if (ticket.orderId)
+			throw new BadRequestError('Ticket already been reserved')
+
 		ticket.set({
 			title,
 			price,
@@ -51,7 +55,8 @@ router.put(
 			id: ticket.id,
 			title: ticket.title,
 			price: ticket.price,
-			userId: ticket.userId
+			userId: ticket.userId,
+			version: ticket.version
 		})
 
 		res.status(200).json(ticket)

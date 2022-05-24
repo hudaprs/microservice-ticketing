@@ -7,6 +7,9 @@ import { OrderStatus } from '@hudaprs-ticketing/common'
 // Model
 import { ITicketDocument } from './ticket.model'
 
+// Mongoose Update If Current
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current'
+
 interface IOrderAttrs {
 	userId: string
 	status: OrderStatus
@@ -19,6 +22,7 @@ interface IOrderDocument extends Document {
 	status: OrderStatus
 	expiresAt: Date
 	ticket: ITicketDocument
+	version: number
 }
 
 interface IOrderModel extends Model<IOrderDocument> {
@@ -55,6 +59,9 @@ const orderSchema = new Schema(
 		}
 	}
 )
+
+orderSchema.set('versionKey', 'version')
+orderSchema.plugin(updateIfCurrentPlugin)
 
 orderSchema.statics.build = (attrs: IOrderAttrs) => {
 	return new Order(attrs)

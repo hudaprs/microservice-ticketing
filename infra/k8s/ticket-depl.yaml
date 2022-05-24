@@ -23,7 +23,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: NATS_URI
-              value: http://nats-srv:4222
+              value: 'http://nats-srv:4222'
             - name: MONGO_URI
               value: mongodb://ticket-mongo-srv:27017/ticket
             - name: JWT_KEY

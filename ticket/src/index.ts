@@ -22,6 +22,9 @@ import cookieSession from 'cookie-session'
 // NATS Wrapper
 import { natsWrapper } from './nats-wrapper'
 
+// Events
+import { OrderCreatedListener, OrderCancelledListener } from './events'
+
 const app: Express = express()
 
 // Trust Proxy
@@ -69,6 +72,10 @@ const start = async (): Promise<void> => {
 		})
 		process.on('SIGINT', () => natsWrapper.client.close())
 		process.on('SIGTERM', () => natsWrapper.client.close())
+
+		// Listen incoming event
+		new OrderCreatedListener(natsWrapper.client).listen()
+		new OrderCancelledListener(natsWrapper.client).listen()
 
 		await mongoose.connect(process.env.MONGO_URI)
 		console.log('Ticket MongoDB Connected')
