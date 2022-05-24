@@ -22,6 +22,9 @@ import mongoose from 'mongoose'
 // Models
 import { Order, Ticket } from '../models'
 
+// Events
+import { OrderCreatedPublisher } from '../events'
+
 const router: Router = Router()
 
 const EXPIRES_TIME = 15 * 60
@@ -59,6 +62,17 @@ router.post(
 			status: OrderStatus.Created,
 			ticket
 		}).save()
+
+		// Publish Event
+		await new OrderCreatedPublisher(natsWrapper.client).publish({
+			userId: order.userId,
+			expiresAt: order.expiresAt.toISOString(),
+			status: order.status,
+			ticket: {
+				id: order.ticket.id,
+				price: order.ticket.price
+			}
+		})
 
 		res.status(201).json({ message: 'Create Order Success' })
 	}
