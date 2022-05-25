@@ -27,7 +27,7 @@ import { OrderCreatedPublisher } from '../events'
 
 const router: Router = Router()
 
-const EXPIRES_TIME = 15 * 60
+const EXPIRES_TIME = 0.15 * 60
 
 router.post(
 	'/',

@@ -41,3 +41,9 @@ docker build -t hudaprasetyo/udemy-microservice-ticketing/ticket .
 ```shell
 docker build -t hudaprasetyo/udemy-microservice-ticketing/order .
 ```
+
+# Build Expiration Service
+
+```shell
+docker build -t hudaprasetyo/udemy-microservice-ticketing/expiration .
+```
