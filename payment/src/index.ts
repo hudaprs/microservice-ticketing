@@ -23,7 +23,11 @@ import cookieSession from 'cookie-session'
 import { natsWrapper } from './nats-wrapper'
 
 // Events
-import { OrderCreatedListener, OrderCancelledListener } from './events'
+import {
+	OrderCreatedListener,
+	OrderCancelledListener,
+	OrderCompleteListener
+} from './events'
 
 const app: Express = express()
 
@@ -78,6 +82,7 @@ const start = async (): Promise<void> => {
 		// Listen incoming event
 		new OrderCreatedListener(natsWrapper.client).listen()
 		new OrderCancelledListener(natsWrapper.client).listen()
+		new OrderCompleteListener(natsWrapper.client).listen()
 
 		await mongoose.connect(process.env.MONGO_URI)
 		console.log('Payment MongoDB Connected')

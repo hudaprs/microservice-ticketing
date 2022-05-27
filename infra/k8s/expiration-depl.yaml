@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: expiration
-          image: hudaprasetyo/udemy-microservice-ticketing/expiration
+          image: hudaprasetyo/udemy-microservice-ticketing-expiration
           env:
             - name: NATS_CLUSTER_ID
               value: ticketing

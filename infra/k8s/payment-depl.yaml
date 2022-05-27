@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: payment
-          image: hudaprasetyo/udemy-microservice-ticketing/payment
+          image: hudaprasetyo/udemy-microservice-ticketing-payment
           env:
             - name: NATS_CLUSTER_ID
               value: ticketing

@@ -15,6 +15,9 @@ import { Message } from 'node-nats-streaming'
 // Models
 import { Order } from '../../models'
 
+// Events
+import { OrderCompletePublisher } from '../publishers'
+
 class PaymentCreatedListener extends Listener<PaymentCreatedEvent> {
 	readonly subject = Subjects.PaymentCreated
 	queueGroupName = ORDER_SERVICE
@@ -37,6 +40,13 @@ class PaymentCreatedListener extends Listener<PaymentCreatedEvent> {
 
 		order.set({ status: OrderStatus.Complete })
 		await order.save()
+
+		// Publish to update status order in payment service
+		await new OrderCompletePublisher(this.client).publish({
+			id: order.id,
+			status: order.status,
+			version: order.version
+		})
 
 		message.ack()
 	}

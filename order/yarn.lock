@@ -9,10 +9,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@hudaprs-ticketing/common@^1.0.30":
-  version "1.0.30"
-  resolved "https://registry.yarnpkg.com/@hudaprs-ticketing/common/-/common-1.0.30.tgz#22141a83cec0a3ebca7e10adc28a06cb1cb541c2"
-  integrity sha512-Uo5BpMIvmzxmyOp4q4FBBBi8dhJSqeKfygWneSrf+4cwgw15bzPmvWGEcgVD7b6K+3qTiGiFGXfFMhdGG4Zwmw==
+"@hudaprs-ticketing/common@^1.0.31":
+  version "1.0.31"
+  resolved "https://registry.yarnpkg.com/@hudaprs-ticketing/common/-/common-1.0.31.tgz#6329a2bf009bd77f639c90a40deafd0675303714"
+  integrity sha512-otJozpw+7yvHU8ya8vgc+1iDhA3LcxI7t2wbjMGjM/YXcJ2PnUTsyQlNvuG0XUvn+OFGuNtuP55TCf1Nf8ndbQ==
   dependencies:
     cookie-session "^2.0.0"
     express "^4.18.1"

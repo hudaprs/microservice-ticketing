@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: order
-          image: hudaprasetyo/udemy-microservice-ticketing/order
+          image: hudaprasetyo/udemy-microservice-ticketing-order
           env:
             - name: NATS_CLUSTER_ID
               value: ticketing
