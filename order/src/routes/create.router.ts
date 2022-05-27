@@ -27,7 +27,7 @@ import { OrderCreatedPublisher } from '../events'
 
 const router: Router = Router()
 
-const EXPIRES_TIME = 0.15 * 60
+const EXPIRES_TIME = 1 * 60
 
 router.post(
 	'/',
@@ -67,6 +67,7 @@ router.post(
 			userId: order.userId,
 			expiresAt: order.expiresAt.toISOString(),
 			status: order.status,
+			version: order.version,
 			ticket: {
 				id: order.ticket.id,
 				price: order.ticket.price

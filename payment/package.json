@@ -1,7 +1,7 @@
 {
-	"name": "order",
+	"name": "payment",
 	"version": "1.0.0",
-	"main": "src/index.ts",
+	"main": "index.js",
 	"license": "MIT",
 	"dependencies": {
 		"@hudaprs-ticketing/common": "^1.0.30",
@@ -12,6 +12,7 @@
 		"mongoose": "^6.3.4",
 		"mongoose-update-if-current": "^1.4.0",
 		"node-nats-streaming": "^0.3.2",
+		"stripe": "^9.5.0",
 		"typescript": "^4.6.4"
 	},
 	"devDependencies": {

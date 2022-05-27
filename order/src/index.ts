@@ -26,7 +26,8 @@ import { natsWrapper } from './nats-wrapper'
 import {
 	TicketCreatedListener,
 	TicketUpdatedListener,
-	ExpirationCompleteListener
+	ExpirationCompleteListener,
+	PaymentCreatedListener
 } from './events'
 
 const app: Express = express()
@@ -81,14 +82,16 @@ const start = async (): Promise<void> => {
 		new TicketCreatedListener(natsWrapper.client).listen()
 		new TicketUpdatedListener(natsWrapper.client).listen()
 		new ExpirationCompleteListener(natsWrapper.client).listen()
+		new PaymentCreatedListener(natsWrapper.client).listen()
 
 		await mongoose.connect(process.env.MONGO_URI)
 		console.log('Order MongoDB Connected')
+
+		app.listen(3000, () => console.log('Order Service Started'))
 	} catch (err) {
 		console.error('Something Went Wrong When Starting The Order Service', err)
+		process.exit()
 	}
-
-	app.listen(3000, () => console.log('Order Service Started'))
 }
 
 // Start The App

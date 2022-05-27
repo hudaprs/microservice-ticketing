@@ -51,11 +51,12 @@ const start = async (): Promise<void> => {
 
 		await mongoose.connect(process.env.MONGO_URI)
 		console.log('Auth MongoDB Connected')
+
+		app.listen(3000, () => console.log('Auth Service Started'))
 	} catch (err) {
 		console.error('Something Went Wrong When Starting The Auth Service', err)
+		process.exit()
 	}
-
-	app.listen(3000, () => console.log('Auth Service Started'))
 }
 
 // Start The App

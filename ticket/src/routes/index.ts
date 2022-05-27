@@ -11,7 +11,7 @@ import { createRouter } from './create.router'
 import { updateRouter } from './update.router'
 
 // Constant
-const TICKET_URL = '/api/tickets/'
+const TICKET_URL = '/api/tickets'
 
 const routes = (app: Express) => {
 	app.use(TICKET_URL, listRouter)

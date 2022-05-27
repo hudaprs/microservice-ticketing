@@ -4,18 +4,18 @@ import { Document, Model, Schema, model } from 'mongoose'
 // Bcrypt
 import bcrypt from 'bcrypt'
 
-interface IUserAttrs {
+interface UserAttrs {
 	email: string
 	password: string
 }
 
-interface IUserDocument extends Document {
+interface UserDocument extends Document {
 	email: string
 	password: string
 }
 
-interface IUserModel extends Model<IUserDocument> {
-	build: (attrs: IUserAttrs) => IUserDocument
+interface UserModel extends Model<UserDocument> {
+	build: (attrs: UserAttrs) => UserDocument
 }
 
 const userSchema = new Schema(
@@ -41,7 +41,7 @@ const userSchema = new Schema(
 	}
 )
 
-userSchema.statics.build = (attrs: IUserAttrs) => {
+userSchema.statics.build = (attrs: UserAttrs) => {
 	return new User(attrs)
 }
 
@@ -55,6 +55,6 @@ userSchema.pre('save', async function (done) {
 	done()
 })
 
-const User = model<IUserDocument, IUserModel>('User', userSchema)
+const User = model<UserDocument, UserModel>('User', userSchema)
 
 export { User }

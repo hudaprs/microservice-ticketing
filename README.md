@@ -4,6 +4,12 @@
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 ```
 
+# Generate Stripe Secret
+
+```shell
+kubectl create secret generic stripe-secret --from-literal=STRIPE_SECRET={YOUR_SECRET_STRIPE}
+```
+
 # Port Forwarding Some Pod
 
 1.  List all of pods
@@ -46,4 +52,10 @@ docker build -t hudaprasetyo/udemy-microservice-ticketing/order .
 
 ```shell
 docker build -t hudaprasetyo/udemy-microservice-ticketing/expiration .
+```
+
+# Build Payment Service
+
+```shell
+docker build -t hudaprasetyo/udemy-microservice-ticketing/payment .
 ```

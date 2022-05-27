@@ -59,13 +59,15 @@ const start = async (): Promise<void> => {
 		if (!process.env.NATS_URI) throw new Error('NATS_URI is not defined!')
 		if (!process.env.JWT_KEY) throw new Error('JWT_KEY is not defined!')
 		if (!process.env.MONGO_URI) throw new Error('MONGO_URI is not defined!')
+		if (!process.env.STRIPE_SECRET)
+			throw new Error('STRIPE_SECRET is not defined!')
 
 		await natsWrapper.connect(
 			process.env.NATS_CLUSTER_ID,
 			process.env.NATS_CLIENT_ID,
 			process.env.NATS_URI
 		)
-		console.log('Ticket NATS Connected')
+		console.log('Payment NATS Connected')
 		natsWrapper.client.on('close', () => {
 			console.log('NATS Closed!')
 			process.exit()
@@ -78,11 +80,11 @@ const start = async (): Promise<void> => {
 		new OrderCancelledListener(natsWrapper.client).listen()
 
 		await mongoose.connect(process.env.MONGO_URI)
-		console.log('Ticket MongoDB Connected')
+		console.log('Payment MongoDB Connected')
 
-		app.listen(3000, () => console.log('Ticket Service Started'))
+		app.listen(3000, () => console.log('Payment Service Started'))
 	} catch (err) {
-		console.error('Something Went Wrong When Starting The Ticket Service', err)
+		console.error('Something Went Wrong When Starting The Payment Service', err)
 		process.exit()
 	}
 }

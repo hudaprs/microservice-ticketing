@@ -38,6 +38,9 @@ class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent> {
 
 		if (!order) throw new Error('Order not found')
 
+		// Check if order is already complete
+		if (order.status === OrderStatus.Complete) return message.ack()
+
 		order.set({ status: OrderStatus.Cancelled })
 		await order.save()
 

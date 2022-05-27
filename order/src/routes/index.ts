@@ -11,7 +11,7 @@ import { createRouter } from './create.router'
 import { deleteRouter } from './delete.router'
 
 // Constant
-const ORDER_URL = '/api/orders/'
+const ORDER_URL = '/api/orders'
 
 const routes = (app: Express) => {
 	app.use(ORDER_URL, listRouter)
