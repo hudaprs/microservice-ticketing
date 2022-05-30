@@ -33,7 +33,7 @@ router.post(
 		const { email, password } = req.body
 
 		const user = await User.findOne({ email })
-		if (!user) throw new BadRequestError('Invalid credentials')
+		if (!user) throw new BadRequestError('Invalid Credentials')
 
 		const isPasswordCorrect = await bcrypt.compare(password, user.password)
 		if (!isPasswordCorrect) throw new BadRequestError('Invalid Credentials')

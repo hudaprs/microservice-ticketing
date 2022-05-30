@@ -25,4 +25,4 @@ const routes = (app: Express) => {
 	})
 }
 
-export { routes }
+export { routes, USER_URL }
