@@ -24,4 +24,4 @@ const routes = (app: Express) => {
 	})
 }
 
-export { routes }
+export { routes, ORDER_URL }

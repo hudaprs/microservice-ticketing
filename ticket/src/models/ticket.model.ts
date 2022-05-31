@@ -4,13 +4,13 @@ import { Schema, Model, Document, model } from 'mongoose'
 // Mongoose Update If Current
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current'
 
-interface ITicketAttrs {
+interface TicketAttrs {
 	title: string
 	price: number
 	userId: string
 }
 
-interface ITicketDocument extends Document {
+interface TicketDocument extends Document {
 	title: string
 	price: number
 	userId: string
@@ -18,8 +18,8 @@ interface ITicketDocument extends Document {
 	orderId?: string
 }
 
-interface ITicketModel extends Model<ITicketDocument> {
-	build: (attrs: ITicketAttrs) => ITicketDocument
+interface TicketModel extends Model<TicketDocument> {
+	build: (attrs: TicketAttrs) => TicketDocument
 }
 
 const ticketSchema = new Schema(
@@ -54,10 +54,10 @@ const ticketSchema = new Schema(
 ticketSchema.set('versionKey', 'version')
 ticketSchema.plugin(updateIfCurrentPlugin)
 
-ticketSchema.statics.build = (attrs: ITicketAttrs) => {
+ticketSchema.statics.build = (attrs: TicketAttrs) => {
 	return new Ticket(attrs)
 }
 
-const Ticket = model<ITicketDocument, ITicketModel>('Ticket', ticketSchema)
+const Ticket = model<TicketDocument, TicketModel>('Ticket', ticketSchema)
 
 export { Ticket }
