@@ -5,28 +5,28 @@ import { Document, Model, Schema, model } from 'mongoose'
 import { OrderStatus } from '@hudaprs-ticketing/common'
 
 // Model
-import { ITicketDocument } from './ticket.model'
+import { TicketDocument } from './ticket.model'
 
 // Mongoose Update If Current
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current'
 
-interface IOrderAttrs {
+interface OrderAttrs {
 	userId: string
 	status: OrderStatus
 	expiresAt: Date
-	ticket: ITicketDocument
+	ticket: TicketDocument
 }
 
-interface IOrderDocument extends Document {
+interface OrderDocument extends Document {
 	userId: string
 	status: OrderStatus
 	expiresAt: Date
-	ticket: ITicketDocument
+	ticket: TicketDocument
 	version: number
 }
 
-interface IOrderModel extends Model<IOrderDocument> {
-	build: (attrs: IOrderAttrs) => IOrderDocument
+interface OrderModel extends Model<OrderDocument> {
+	build: (attrs: OrderAttrs) => OrderDocument
 }
 
 const orderSchema = new Schema(
@@ -63,10 +63,10 @@ const orderSchema = new Schema(
 orderSchema.set('versionKey', 'version')
 orderSchema.plugin(updateIfCurrentPlugin)
 
-orderSchema.statics.build = (attrs: IOrderAttrs) => {
+orderSchema.statics.build = (attrs: OrderAttrs) => {
 	return new Order(attrs)
 }
 
-const Order = model<IOrderDocument, IOrderModel>('Order', orderSchema)
+const Order = model<OrderDocument, OrderModel>('Order', orderSchema)
 
 export { Order }

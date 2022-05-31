@@ -10,22 +10,22 @@ import { OrderStatus } from '@hudaprs-ticketing/common'
 // Mongoose Update If Current
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current'
 
-interface ITicketAttrs {
+interface TicketAttrs {
 	id: string
 	title: string
 	price: number
 }
 
-interface ITicketDocument extends Document {
+interface TicketDocument extends Document {
 	title: string
 	price: number
 	version: number
 	isReserved: () => Promise<boolean>
 }
 
-interface ITicketModel extends Model<ITicketDocument> {
-	build: (attrs: ITicketAttrs) => ITicketDocument
-	findByEvent: (attrs: { id: string; version: number }) => ITicketDocument
+interface TicketModel extends Model<TicketDocument> {
+	build: (attrs: TicketAttrs) => TicketDocument
+	findByEvent: (attrs: { id: string; version: number }) => TicketDocument
 }
 
 const ticketSchema = new Schema(
@@ -53,7 +53,7 @@ const ticketSchema = new Schema(
 ticketSchema.set('versionKey', 'version')
 ticketSchema.plugin(updateIfCurrentPlugin)
 
-ticketSchema.statics.build = (attrs: ITicketAttrs) => {
+ticketSchema.statics.build = (attrs: TicketAttrs) => {
 	return new Ticket({ _id: attrs.id, title: attrs.title, price: attrs.price })
 }
 ticketSchema.statics.findByEvent = (attrs: { id: string; version: number }) => {
@@ -75,6 +75,6 @@ ticketSchema.methods.isReserved = async function () {
 	return !!existingOrder
 }
 
-const Ticket = model<ITicketDocument, ITicketModel>('Ticket', ticketSchema)
+const Ticket = model<TicketDocument, TicketModel>('Ticket', ticketSchema)
 
-export { Ticket, ITicketDocument }
+export { Ticket, TicketDocument }
