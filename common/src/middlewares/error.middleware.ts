@@ -20,9 +20,7 @@ const errorMiddleware_handler = (
 
 	// Mongoose Error
 	if (err instanceof MongooseError.CastError && err.kind === 'ObjectId') {
-		return res
-			.status(400)
-			.json({ errors: [{ message: 'Invalid ObjectId in parameter!' }] })
+		return res.status(404).json({ errors: [{ message: 'Not Found' }] })
 	}
 
 	console.error(err)
